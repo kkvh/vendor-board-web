@@ -5,7 +5,7 @@
   let expanded = false;
 </script>
 
-<tr on:click={() => (expanded = !expanded)} class="board-entry">
+<tr on:click={() => (expanded = !expanded)} class="board-entry border-t border-gray-400">
   <td>{expanded ? '▼' : '▶'}</td>
   <td>{boardRecord.id}</td>
   <td>{boardRecord.name}</td>
@@ -15,8 +15,8 @@
 <tr style="display: {expanded ? 'table-row' : 'none'};">
   <td></td>
   <td colspan="4">
-    <table>
-      <thead>
+    <table class="w-1/2 table-fixed text-left">
+      <thead class="border-b border-gray-400">
         <tr>
           <th>Device ID</th>
           <th>Device Name</th>

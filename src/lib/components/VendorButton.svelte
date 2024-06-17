@@ -10,31 +10,35 @@
   );
 </script>
 
-<button on:click={() => (open = !open)}>Vendors</button>
-{#if open}
-  <div>
-    <input type="text" bind:value={search} placeholder="Search vendors" /><br />
-    <label for="search"></label>
-    <button
-      on:click={() => {
-        selectedVendors.update((vendors) => {
-          for (const vendor in vendors) {
-            vendors[vendor] = false;
-          }
-          return vendors;
-        });
-      }}>All</button
-    >
-    <br />
-    {#each filteredVendors as vendor}
-      <input
-        type="checkbox"
-        id={vendor}
-        name={vendor}
-        value={vendor}
-        bind:checked={$selectedVendors[vendor]}
-      />
-      <label for={vendor}>{vendor}</label><br />
-    {/each}
-  </div>
-{/if}
+<div>
+  <button class="border border-gray-400 px-2 justify-center rounded-md" on:click={() => (open = !open)}
+    >Vendors</button
+  >
+  {#if open}
+    <div class="w-1/5 border border-gray-400 absolute z-10 bg-white">
+      <input class="w-full" type="text" bind:value={search} placeholder="Search vendors" /><br />
+      <label for="search"></label>
+      <button
+        on:click={() => {
+          selectedVendors.update((vendors) => {
+            for (const vendor in vendors) {
+              vendors[vendor] = false;
+            }
+            return vendors;
+          });
+        }}>All</button
+      >
+      <br />
+      {#each filteredVendors as vendor}
+        <input
+          type="checkbox"
+          id={vendor}
+          name={vendor}
+          value={vendor}
+          bind:checked={$selectedVendors[vendor]}
+        />
+        <label for={vendor}>{vendor}</label><br />
+      {/each}
+    </div>
+  {/if}
+</div>
